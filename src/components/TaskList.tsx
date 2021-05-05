@@ -26,11 +26,19 @@ export function TaskList() {
   console.log(tasks)
 
   function handleToggleTaskCompletion(id: number) {
-    const updatedTask = tasks.map(task => { 
-      if(task.id === id){
-        return {...task,isComplete:true}
+    // Atualizando o array
+    const updatedTasks:Task[] = tasks.map(task => { 
+      // Encontrando a task pelo id
+      if(task.id == id){
+        // Modificando a task e retornando a task modificada (Inverter isComplete)
+        return {...task,isComplete:!task.isComplete}
       }
-    })
+
+      // Armazenando array modificado na variável updatedTaks
+      return task;
+    });
+
+    setTasks(updatedTasks);
   }
 
   function handleRemoveTask(id: number) {
